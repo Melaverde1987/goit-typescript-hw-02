@@ -11,8 +11,11 @@ type AllType = {
   weight: number
 }
 
-function compare (top, bottom): AllType {
-  return {
+type Top = Pick<AllType, 'name' | 'color'>;
+type Bottom = Pick<AllType, 'position' | 'weight'>;
+
+function compare<A extends Top, B extends Bottom>(top: A, bottom: B){
+   return {
     name: top.name,
     color: top.color,
     position: bottom.position,
